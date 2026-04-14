@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Access temporary terminal via SSH
-        uses: appleboy/ssh-action@latest
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
