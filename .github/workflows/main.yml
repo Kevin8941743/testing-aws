@@ -1,0 +1,24 @@
+name: deploying to Amazon EC2
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Access temporary terminal via SSH
+        uses: appleboy/ssh-action@latest
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd ~/testing-aws
+            git pull origin main
+            npm install
+            pm2 restart server.js || pm2 start server.js
