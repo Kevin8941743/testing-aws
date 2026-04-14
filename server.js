@@ -6,7 +6,7 @@ const PORT = 3000
 
 
 app.get("/express/aws", (req, res) => {
-    res.status(200).send("Working correctly!")
+    res.status(200).send("Testing if CI works correctly")
 })
 
 
